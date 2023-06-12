@@ -28,3 +28,19 @@ nomeCompleto('Douglas','Danado')
 function nomeCompleto(nome, sobrenome){
     document.write('Nome Completo: '+nome+' '+sobrenome)
 }
+
+function calculadora(numA, numB, op){
+    if(op=="somar"){
+    return numA + numB;
+    } else if(op=="subtrair"){
+    return numA - numB;
+    } else if(op=="dividir"){
+    return numA * numB;
+    } else if(op=="multiplicar"){
+    return numA / numB;
+    }else{
+    return "ESSE OPERADOR NÃO EXISTE!";
+    }
+}
+
+document.write(calculadora(3,5,"soma"))
