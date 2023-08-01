@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic tac toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>TIC TAC TOE</h1>
+    <div id="board"></div>
+    <button id="restartButton">Restart</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const board = document.getElementById('board');
+            const cells = Array.from({ length: 9 });
+
+            let currentPlayer = 'X';
+            let gameOver = false;
+
+            const checkWinner = () => {
+                const winPatterns = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                    [0, 4, 8], [2, 4, 6]
+                ];
+
+                for (const pattern of winPatterns) {
+                    const [a, b, c] = pattern;
+                    if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
+                        return cells[a];
+                    }
+                }
+            };
+
+            const checkTie = () => {
+                return cells.every(cell => cell);
+            };
+
+            const handleCellClick = (index) => {
+                if (gameOver || cells[index]) return;
+
+                cells[index] = currentPlayer;
+                renderBoard();
+
+                const winner = checkWinner();
+                if (winner) {
+                    gameOver = true;
+                    alert(`O jogador ${winner} venceu!`);
+                    return;
+                }
+
+                if (checkTie()) {
+                    gameOver = true;
+                    alert('Empate! O jogo acabou.');
+                }
+
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                if (currentPlayer === 'O') {
+                    computerPlayer();
+                }
+            };
+
+            const computerPlayer = () => {
+                const availableCells = cells.map((cell, index) => cell ? false : index);
+                const emptyCells = availableCells.filter(cell => cell !== false);
+                const randomIndex = Math.floor(Math.random() * emptyCells.length);
+                const cellIndex = emptyCells[randomIndex];
+
+                setTimeout(() => handleCellClick(cellIndex), 500);
+            };
+
+            const renderBoard = () => {
+                board.innerHTML = '';
+                cells.forEach((cell, index) => {
+                    const cellElement = document.createElement('div');
+                    cellElement.classList.add('cell');
+                    cellElement.textContent = cell || '';
+                    cellElement.addEventListener('click', () => handleCellClick(index));
+                    board.appendChild(cellElement);
+                });
+            };
+            
+            const restartGame = () => {
+                cells.fill(null)
+                currentPlayer = 'X'
+                gameOver = false
+                renderBoard()
+            }
+
+            const restartButton = document.getElementById('restartButton')
+            restartButton.addEventListener('click', restartGame)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculatorSimple</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CALCULATOR SUPREME 3000</h1>
+    <input type="text" id="display" placeholder="0" disabled>
+    <br>
+    <br>
+    <div id="keyboard">
+        <div id="line1">
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="operator">+</button>
+            <br>
+        </div id="line2">
+        <div>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="operator">-</button>
+        <br>
+        </div>
+        <div id="line3">
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="operator">*</button>
+        <br>
+        </div>
+        <div id="line4">
+            <button class="number">0</button>
+            <button class="clear">C</button>
+            <button class="equal">=</button>
+            <button class="operator">/</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const display = document.getElementById('display')
+            const buttons = document.querySelectorAll('button')
+
+            let currentNumber = ''
+            let firstOperand = null 
+            let operator = null
+
+            const updateDisplay = () => {
+                display.value = currentNumber
+            }
+
+            const operate = () => {
+                const number1 = parseFloat(firstOperand)
+                const number2 = parseFloat(currentNumber)
+
+                switch(operator){
+                    case '+':
+                        currentNumber = (number1 + number2).toString()
+                        break
+                    case '-':
+                        currentNumber = (number1 - number2).toString()
+                        break
+                    case '*':
+                        currentNumber = (number1 * number2).toString()
+                        break
+                    case '/':
+                        currentNumber = (number1 / number2).toString()
+                        break
+                }
+            firstOperand = null
+            operator = null
+            }
+            buttons.forEach(button => {
+                button.addEventListener('click', () =>{
+                    const value = button.textContent
+
+                    if (value === 'C'){
+                        currentNumber=''
+                        operator = null
+                        firstOperand = null
+                        updateDisplay()
+                    } else if (value === '='){
+                        if(firstOperand !== null && operator !== null){
+                            operate()
+                            updateDisplay()
+                        }
+                    } else if (value.match(/[0-9]/)){
+                        currentNumber += value
+                        updateDisplay()
+                    } else if (value.match(/[\+\-\*\/]/)){
+                        if (firstOperand === null){
+                            firstOperand = currentNumber
+                            currentNumber = ''
+                        }
+                        operator = value
+                    }
+
+                })
+            })
+        })
+    </script>
+</body>
+</html>

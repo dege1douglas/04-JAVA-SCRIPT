@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+h1{
+    font-family:'Times New Roman', Times, serif;
+    transition: all .2s;
+
+}
+h1:hover{
+    transform: rotate(10deg);
+}
+#display{
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 50px;
+    background-color: lightyellow;
+}
+
+button{
+    margin: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    border: black 2px solid;
+    font-size: 50px;
+    transition: all .2s;
+    background-color: lightpink;
+}
+button:hover{
+    background-color: lightsalmon;
+    transform: scale(1.2);
+}

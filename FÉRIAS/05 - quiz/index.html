@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIES QUIZ</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    
+        h1 {
+            text-align: center;
+        }
+    
+        #quiz {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    
+        .question {
+            margin-bottom: 10px;
+        }
+    
+        label {
+            display: block;
+        }
+    
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Quiz de Filmes</h1>
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Enviar Respostas</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizContainer = document.getElementById('quiz')
+            const submitButton = document.querySelector('button')
+
+            const questions = [
+                {
+                    question: 'Qual é o filme mais vendido de todos os tempos?',
+                    options: ['Vingadores: Ultimato', 'Avatar', 'Titanic', 'Star Wars: O Despertar da Força'],
+                    answer: 'Avatar'
+                },
+                {
+                    question: 'Em qual filme o personagem "Luke Skywalker" aparece?',
+                    options: ['Star Wars: A Ameaça Fantasma', 'Star Wars: Uma Nova Esperança', 'Star Wars: O Império Contra-Ataca', 'Star Wars: O Despertar da Força'],
+                    answer: 'Star Wars: Uma Nova Esperança'
+                },
+                {
+                    question: 'Qual ator interpretou "Harry Potter" nos filmes da série?',
+                    options: ['Daniel Radcliffe', 'Rupert Grint', 'Tom Felton', 'Emma Watson'],
+                    answer: 'Daniel Radcliffe'
+                }
+            ]
+
+            function buildQuiz() {
+                questions.forEach((question, index) => {
+                    const questionElement = document.createElement('div')
+                    questionElement.classList.add('question')
+
+                    const questionText = document.createElement('p')
+                    questionText.textContent = `${index + 1}. ${question.question}`
+                    questionElement.appendChild(questionText)
+
+                    question.options.forEach(option => {
+                        const optionElement = document.createElement('label')
+                        optionElement.textContent = option
+
+                        const inputElement = document.createElement('input')
+                        inputElement.type = 'radio'
+                        inputElement.name = `question${index}`
+                        inputElement.value = option
+
+                        optionElement.appendChild(inputElement)
+                        questionElement.appendChild(optionElement)
+                    })
+
+                    quizContainer.appendChild(questionElement)
+                })
+            }
+
+
+            function calculateScore() {
+                let score = 0
+                questions.forEach((question, index) => {
+                    const selectedOption = document.querySelector(`input[name="question${index}"]:checked`)
+                    if (selectedOption && selectedOption.value === question.answer) {
+                        score++
+                    }
+                })
+                return score
+            }
+
+            function submitQuiz() {
+                const score = calculateScore()
+                alert(`Sua pontuação: ${score} de ${questions.length}`)
+            }
+
+            buildQuiz()
+        })
+
+    </script>
+</body>
+</html>
