@@ -24,24 +24,24 @@
     <div id="clock"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const clock = document.getElementById('clock');
+            const clock = document.getElementById('clock')
         
             function updateClock() {
-                const now = new Date();
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
-                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const now = new Date()
+                const hours = String(now.getHours()).padStart(2, '0')
+                const minutes = String(now.getMinutes()).padStart(2, '0')
+                const seconds = String(now.getSeconds()).padStart(2, '0')
         
-                const timeString = `${hours}:${minutes}:${seconds}`;
-                clock.textContent = timeString;
+                const timeString = `${hours}:${minutes}:${seconds}`
+                clock.textContent = timeString
             }
         
             // Atualiza o relógio a cada segundo
-            setInterval(updateClock, 1000);
+            setInterval(updateClock, 1000)
         
             // Inicializa o relógio imediatamente após o carregamento da página
-            updateClock();
-        });
+            updateClock()
+        })
     </script>
      
 </body>
