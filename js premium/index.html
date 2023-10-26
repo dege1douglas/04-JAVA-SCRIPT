@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS novo início</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- number 01 - hello world -->
+    <div id="hellower">
+        <p id="helloPrint"></p>
+    </div>
+
+    <!-- number 02 - importar -->
+    <!-- number 03 - soma de 2 numeros -->
+    <div id="somar">
+    <input type="text" name="textinput" value="" id="value1">
+    <input type="text" name="textinput" value="" id="value2">
+    <button onclick="soma()" id="button1">OK</button>
+    <p id="somaPrint"></p>
+    </div>
+
+    <!-- number 04 - full name -->
+    <div id="fullName">
+    <input type="text" name="name" value="" id="nameFull1">
+    <button onclick="nomeFull()" id="button1">OK</button>
+    <p id="fullNamePrint"></p>
+
+    <!-- number 06 - acender lampada -->
+    <img src="https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true" 
+    id="image" 
+    alt="acesa" 
+    width="50px">
+
+    
+    </div>
+    <script>
+        // usando js para solucionar atividades simples e desenvolver 
+        //01 - hellow
+        document.getElementById("helloPrint").textContent = "Hello, world!";
+
+        //03 - soma
+        function soma() {
+            let value1 = Number(document.getElementById("value1").value)
+            let value2 = Number(document.getElementById("value2").value)
+            let somaResult = value1 + value2
+            document.getElementById("somaPrint").textContent = `${value1} + ${value2} = ${somaResult}`;
+        }
+
+        //04 - nome completo
+        //05 - quantia de letras
+        function nomeFull(){
+            const nameFull = document.getElementById('nameFull1').value
+            const nameLen = nameFull.length
+            document.getElementById('fullNamePrint').textContent = `${nameFull}  #: ${nameLen}`;
+        }
+
+        //06 - acender lampada
+        const image = document.getElementById('image')
+        if(image.src.endsWith('https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true')){
+            
+        image.src = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true"
+        image.alt = "apagada"
+        }       
+
+    </script>
+</body>
+</html>
