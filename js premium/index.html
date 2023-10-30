@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS novo início</title>
+    <style>
+    </style>
+</head>
+<body>
+    <!-- number 01 - hello world -->
+    <!-- <div id="hellower">
+        <p id="helloPrint"></p>
+    </div> -->
+
+    <!-- number 02 - importar -->
+    <!-- number 03 - soma de 2 numeros -->
+    <!-- <div id="somar">
+    <input type="text" name="textinput" value="" id="value1">
+    <input type="text" name="textinput" value="" id="value2">
+    <button onclick="soma()" id="button1">OK</button>
+    <p id="somaPrint"></p>
+    </div> -->
+
+    <!-- number 04 - full name -->
+    <!-- <div id="fullName">
+    <input type="text" name="name" value="" id="nameFull1">
+    <button onclick="nomeFull()" id="button1">OK</button>
+    <p id="fullNamePrint"></p> -->
+
+    <!-- number 06 - acender lampada -->
+    <!-- <img src="https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true" id="image" width="100px" alt="">
+    
+    <br>
+    <br>
+    <br> -->
+
+    <!-- number 07-a - saudaçao -->
+    <!-- <input type="text" name="" id="name">
+    <input type="text" name="" id="lastName">
+    <button id="salute">salute</button> -->
+
+    <!-- number 08 - cpf com pontuaçao -->
+    <input type="text" name="" max="11" id="cpfPoint">
+    <button onclick="cpfPointerOff()">GO!</button>
+
+
+    <!-- number 09 - cpf sem pontuaçao -->
+    <input type="text" name="" max="14" id="cpfPoint">
+    <button onclick="cpfPointer()">GO!</button>
+
+
+    </div>
+    
+    <script>
+        // // usando js para solucionar atividades simples e desenvolver 
+        // //01 - hellow
+        // document.getElementById("helloPrint").textContent = "Hello, world!";
+
+        // //03 - soma
+        // function soma() {
+        //     let value1 = Number(document.getElementById("value1").value)
+        //     let value2 = Number(document.getElementById("value2").value)
+        //     let somaResult = value1 + value2
+        //     document.getElementById("somaPrint").textContent = `${value1} + ${value2} = ${somaResult}`;
+        // }
+
+        // //04 - nome completo
+        // //05 - quantia de letras
+        // function nomeFull() {
+        //     const nameFull = document.getElementById('nameFull1').value
+        //     const nameLen = nameFull.length
+        //     document.getElementById('fullNamePrint').textContent = `${nameFull}  #: ${nameLen}`;
+        // }
+
+        // //06 - acender lampada com click
+        // const OnOff = ()=> {
+        //     const image = document.getElementById('image').src
+        //     const lightOn = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada.jpg?raw=true"
+        //     const lightOff = "https://github.com/gabrieldarezzo/helpjs-ravi/blob/master/images/lampada-on.jpg?raw=true"
+        //     if (image == lightOn){
+        //         document.getElementById('image').src = lightOff
+        //     }else{  
+        //         document.getElementById('image').src = lightOn
+        //     }
+        // }
+        // // document.getElementById('image').addEventListener('click', OnOff)
+
+        // //07 - acender lampada com mouseover
+        // document.getElementById('image').addEventListener('mouseover', OnOff)
+        // document.getElementById('image').addEventListener('mouseleave', OnOff)
+        
+        // //07-a - saudaçao
+        // const salute = ()=> {
+        //     const name = document.querySelector('#name').value
+        //     const lastName = document.querySelector('#lastName').value
+        //     alert("Olá "+name+" "+lastName+"!")
+        // }
+        // document.getElementById('salute').addEventListener('click', salute)
+        
+        //08 - cpf com point
+        function cpfPointerOff(){
+            let cpfPointOff = document.getElementById("cpfPoint").value
+            for (let j=0; j < cpfPointOff.length; j++){
+                if(cpfPointOff[j]=== 2 || cpfPointOff[j]=== 5 || cpfPointOff[j]===)
+            }
+            if(cpfNumbers.length === 14){
+                console.log("CPF s/ signos: "+cpfPoint)
+                console.log("CPF: "+numbers)
+            }
+        }
+
+        //09 - cpf sem point
+        function cpfPointer(){
+            let cpfPoint = document.getElementById("cpfPoint").value
+            let numbers = cpfPoint.toString().replace(/\.|-/g,'');
+            if(numbers.length === 11){
+                console.log("CPF c/ signos: "+cpfPoint)
+                console.log("CPF: "+numbers)
+            }
+        }
+            
+        
+        
+    </script>
+</body>
+</html>
